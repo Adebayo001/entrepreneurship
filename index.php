@@ -8,7 +8,7 @@ if(isset($_POST['next_page'])){
 	$matric = $_POST['matric'];
 	$faculty = $_POST['faculty'];
 	$department = $_POST['department'];
-	$study = $_POST['study'];
+	$ststat = $_POST['study'];
 	$level = $_POST['level'];
 	$_SESSION['matric'] = $matric;
 	
@@ -21,7 +21,7 @@ if(isset($_POST['next_page'])){
          window.location.href='index.php';</script>";
   } else {
 	$addquery = "INSERT INTO students(full_name, matric_no, department, std_level, campus, college, faculty, study) ";
-	$addquery .= "VALUES('{$fullname}', '{$matric}', '{$department}', '{$level}', '{$campus}', '{$college}', '{$faculty}', '{$study}')";
+	$addquery .= "VALUES('{$fullname}', '{$matric}', '{$department}', '{$level}', '{$campus}', '{$college}', '{$faculty}', '{$ststat}')";
 	$insert_query = mysqli_query($connection, $addquery);
 	header("Location: state.php");
   }
@@ -74,7 +74,7 @@ if(isset($_POST['next_page'])){
 						</ul> -->
 						<ul class="icons">
 							<li>
-								<input type="submit" href ="javascript:onClick=top.close();" value="Exit" >
+								<input type="submit" href ="" value="Exit" >
 							</li>
 						</ul>
 					</nav>
@@ -135,12 +135,12 @@ if(isset($_POST['next_page'])){
 								</div> -->
 								<div class="field">
 									<label for="state">Student Status</label>
-									<select class="form-control" name="ststat" id="ststat" placeholder="Pick State" onchange="show(this)">
+									<select class="form-control" name="ststat" id="ststat" onchange="show(this)" required>
 									</select>
 								</div>
 								<div class="field" id="slevel1" style="display: none;">
 									<label for="slga">Level</label>
-									<select class="form-control" name="slevel" id="slevel" placeholder="State LGA">
+									<select class="form-control" name="level" id="slevel" required>
 									</select>
 								</div>
 								<div class="field">
