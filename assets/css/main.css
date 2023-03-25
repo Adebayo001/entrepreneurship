@@ -3452,8 +3452,8 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 
 			#intro {
-				padding: 2rem 4rem 2rem 4rem ;
-				min-height: 80vh;
+				padding: 1rem 4rem 2rem 4rem ;
+				min-height: 50vh;
 			}
 
 				#intro p br {
@@ -3469,8 +3469,8 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			#intro {
-				padding: 1.5rem 2rem 1rem 2rem ;
-				min-height: 70vh;
+				padding: 1rem 2rem 1rem 2rem ;
+				min-height: 50vh;
 			}
 
 				#intro h1 {
@@ -4538,7 +4538,8 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 
 			#navPanelToggle {
-				display: block;
+				display: none;
+				/* display: block; */
 			}
 
 		}

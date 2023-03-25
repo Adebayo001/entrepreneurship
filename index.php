@@ -57,9 +57,9 @@ if(isset($_POST['next_page'])){
 					</div>
 
 				<!-- Header -->
-					<!-- <header id="header">
-						<a href="index.html" class="logo">Massively</a>
-					</header> -->
+				<header id="header">
+						<a href="" class="logo">ENTREPRENEURSHIP FORM</a>
+					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
