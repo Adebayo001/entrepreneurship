@@ -19,11 +19,11 @@ if(isset($_POST['submit'])){
 	$query = "UPDATE students SET ";
 	$query .= "training_centre = '{$centre_name}', ";
 	$query .= "training_address = '{$centre_address}', ";
-	$query .= "work_nature = '{$work_nature}', ";
+	$query .= "nature_of_work = '{$work_nature}', ";
 	$query .= "trainer_name = '{$trainer_name}', ";
-	$query .= "duration = '{$duration}', ";
-	$query .= "trainer_number = '{$trainer_phone}', ";
-	$query .= "std_image = '{$std_image}' ";
+	$query .= "training_duration = '{$duration}', ";
+	$query .= "trainer_phone = '{$trainer_phone}', ";
+	$query .= "image = '{$std_image}' ";
 	$query .= "WHERE matric_no = '{$matric}'";
 	$update_std = mysqli_query($connection, $query);
 
@@ -65,8 +65,8 @@ if(isset($_POST['submit'])){
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-						<li><a href="index.php">ACADEMIC IDENTIFICATION</a></li>
-							<li><a href="state.php">State Placement</a></li>
+							<!-- <li><a href="index.php">ACADEMIC IDENTIFICATION</a></li>
+							<li><a href="state.php">State Placement</a></li> -->
 							<li class="active"><a href="trainer.php">Training</a></li>
 						</ul>
 						</ul>
@@ -126,7 +126,9 @@ if(isset($_POST['submit'])){
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; CENTRE FOR ENTREPRENEURSHIP</li><li>Design: <a href="">ADETECHNOLOGY</a></li></ul>
+						<ul><li>&copy; CENTRE FOR ENTREPRENEURSHIP</li>
+						<!-- <li>Design: <a href="">ADETECHNOLOGY</a></li> -->
+					</ul>
 					</div>
 
 			</div>

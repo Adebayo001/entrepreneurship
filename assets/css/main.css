@@ -2317,7 +2317,7 @@ input, select, textarea {
 		font-weight: 900;
 		line-height: 1.5;
 		letter-spacing: 0.075em;
-		font-size: 0.8rem;
+		font-size: 1.0rem;
 		text-transform: uppercase;
 		margin: 0 0 0.75rem 0;
 	}
@@ -3310,7 +3310,7 @@ input, select, textarea {
 		cursor: default;
 		text-align: center;
 		z-index: 1;
-		min-height: 100vh;
+		min-height: 80vh;
 	}
 
 		#intro input, #intro select, #intro textarea {
@@ -3452,8 +3452,8 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 
 			#intro {
-				padding: 4rem 4rem 2rem 4rem ;
-				min-height: 90vh;
+				padding: 2rem 4rem 2rem 4rem ;
+				min-height: 80vh;
 			}
 
 				#intro p br {
@@ -3469,19 +3469,20 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			#intro {
-				padding: 3rem 2rem 1rem 2rem ;
-				min-height: 80vh;
+				padding: 1.5rem 2rem 1rem 2rem ;
+				min-height: 70vh;
 			}
 
 				#intro h1 {
-					font-size: 3.25rem;
-					line-height: 1.1;
+					font-size: 3rem;
+					line-height: 1.0;
 					margin-bottom: 1rem;
 				}
 
 				#intro p {
-					font-size: 1rem;
+					font-size: 1.0rem;
 					margin-top: 0rem;
+					margin-bottom: 0rem;
 				}
 
 				#intro .actions {
@@ -4620,7 +4621,7 @@ input, select, textarea {
 			right: 0;
 			text-align: right;
 			top: 0;
-			vertical-align: middle;
+			/* vertical-align: middle; */
 			width: 7rem;
 		}
 

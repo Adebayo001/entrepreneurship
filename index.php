@@ -2,17 +2,19 @@
 <?php session_start();?>
 <?php
 if(isset($_POST['next_page'])){
+	$matric = $_POST['matric'];
 	$fullname = $_POST['fullname'];
 	$campus = $_POST['campus'];
 	$college = $_POST['college'];
-	$matric = $_POST['matric'];
 	$faculty = $_POST['faculty'];
 	$department = $_POST['department'];
-	$ststat = $_POST['study'];
+	$ststat = $_POST['ststat'];
 	$level = $_POST['level'];
+	$semester = $_POST['semester'];
+	
 	$_SESSION['matric'] = $matric;
 	
-	$query = "SELECT matric_no FROM students WHERE matric_no = '$matric'";
+	$query = "SELECT matric_no FROM students WHERE matric_no = '{$matric}'";
     $student_query = mysqli_query($connection, $query);
     $count = mysqli_num_rows($student_query);
     
@@ -20,8 +22,8 @@ if(isset($_POST['next_page'])){
          echo "<script>alert('Matriculation Number already exist');
          window.location.href='index.php';</script>";
   } else {
-	$addquery = "INSERT INTO students(full_name, matric_no, department, std_level, campus, college, faculty, study) ";
-	$addquery .= "VALUES('{$fullname}', '{$matric}', '{$department}', '{$level}', '{$campus}', '{$college}', '{$faculty}', '{$ststat}')";
+	$addquery = "INSERT INTO students(matric_no, full_name, campus, college, faculty, department, std_status, std_level, semester) ";
+	$addquery .= "VALUES('{$matric}', '{$fullname}', '{$campus}', '{$college}', '{$faculty}', '{$department}', '{$ststat}', '{$level}', '{$semester}')";
 	$insert_query = mysqli_query($connection, $addquery);
 	header("Location: state.php");
   }
@@ -45,8 +47,8 @@ if(isset($_POST['next_page'])){
 					<div id="intro">
 						<img width="120px" height="130px" src="images/logo.png"><br>
 						<h2>OSUN STATE UNIVERSITY, OSOGBO</h2>
-						<p>OFFICE OF THE VICE CHANCELLOR<br/>
-						CENTRE FOR ENTREPRENEURSHIP</p>
+						<p>OFFICE OF THE VICE CHANCELLOR</p>
+						<p>CENTRE FOR ENTREPRENEURSHIP</p>
 						<!-- <p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
 						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p> -->
 						<ul class="actions">
@@ -63,8 +65,8 @@ if(isset($_POST['next_page'])){
 					<nav id="nav">
 						<ul class="links">
 							<li class="active"><a href="">ACADEMIC IDENTIFICATION</a></li>
-							<li><a href="state.php">State Placement</a></li>
-							<li><a href="trainer.php">Training</a></li>
+							<!-- <li><a href="state.php">State Placement</a></li>
+							<li><a href="trainer.php">Training</a></li> -->
 						</ul>
 						<!-- <ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -72,11 +74,11 @@ if(isset($_POST['next_page'])){
 							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul> -->
-						<ul class="icons">
+						<!-- <ul class="icons">
 							<li>
-								<input type="submit" href ="" value="Exit" >
+								<input type="submit" onClick ="javascript:window.close()" value="Exit" >
 							</li>
-						</ul>
+						</ul> -->
 					</nav>
 
 				<!-- Main -->
@@ -86,7 +88,7 @@ if(isset($_POST['next_page'])){
 						<form method="post" action="">
 							<div class="fields">
 							<div class="field">
-									<label for="matric">Matriculation</label>
+									<label for="matric">Matriculation Number</label>
 									<input type="text" autocomplete="off" name="matric" placeholder="Input Your Matriculation Number" required>
 								</div>
                                 <div class="field">
@@ -115,6 +117,7 @@ if(isset($_POST['next_page'])){
                                         <option>Education</option>
                                         <option>Humanities & Culture</option>
                                         <option>Law</option>
+										<option>Agriculture</option>
 									</select>
 								</div>
                                 <div class="field">
@@ -134,7 +137,7 @@ if(isset($_POST['next_page'])){
 									<input type="text" autocomplete="off" name="level" placeholder="Input Your Level" required>
 								</div> -->
 								<div class="field">
-									<label for="state">Student Status</label>
+									<label for="state">Fresher or Returning</label>
 									<select class="form-control" name="ststat" id="ststat" onchange="show(this)" required>
 									</select>
 								</div>
@@ -147,6 +150,14 @@ if(isset($_POST['next_page'])){
 									<label for="session">Session</label>
 									<input type="text" autocomplete="off" name="session" value="2022/2023" readonly>
 								</div>
+								<div class="field">
+									<label for="semester">Select Semester</label>
+									<select class="form-control" name="semester" placeholder="Select Semester" required>
+                                        <option value="">--Select Semester--</option>
+                                        <option>Harmattan</option>
+                                        <option>Rain</option>
+									</select>
+								</div>
                                 
 								<!-- <div class="field">
 									<label for="message">Message</label>
@@ -154,7 +165,7 @@ if(isset($_POST['next_page'])){
 								</div> -->
 							</div>
 							<ul class="actions">
-								<li><input type="submit" name="next_page" value="Next" /></li>
+								<li><input type="submit" name="next_page" value="Next"></li>
 							</ul>
 						</form>
 
@@ -162,7 +173,9 @@ if(isset($_POST['next_page'])){
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; CENTRE FOR ENTREPRENEURSHIP</li><li>Design: <a href="">ADETECHNOLOGY</a></li></ul>
+						<ul><li>&copy; CENTRE FOR ENTREPRENEURSHIP</li>
+						<!-- <li>Design: <a href="">ADETECHNOLOGY</a></li> -->
+					</ul>
 					</div>
 
 			</div>
@@ -180,7 +193,7 @@ if(isset($_POST['next_page'])){
 				var studentstat = [
       {"ID": "0", "Name": "----Choose----"},
       {"ID": "Fresher", "Name": "Fresher"},
-      {"ID": "Satellite", "Name": "Satellite"},
+      {"ID": "Returning", "Name": "Returning"},
       ];
       
       var ab = document.getElementById('ststat');
@@ -202,7 +215,7 @@ if(isset($_POST['next_page'])){
             "100 Level",
             "200 Level"
           ],
-          "Satellite": [
+          "Returning": [
             "200 Level",
             "300 Level",
             "400 Level",

@@ -129,8 +129,10 @@ margin-bottom:2px;
 
 </style>
 </head>
-<!-- onload="javascript:window.print()" -->
 <body>
+<?php if(isset($_SESSION['matric'])){
+echo "<script> onload='javascript:window.print()' </script>";
+} ?>
 <p>
 <div id="main">
 <div id="mid_header">
@@ -151,13 +153,13 @@ margin-bottom:2px;
       while($row = mysqli_fetch_assoc($fetch_query)){
         $fullname = $row['full_name'];
         $matric = $row['matric_no'];
-        $std_image = $row['std_image'];
+        $std_image = $row['image'];
         $department = $row['department'];
         $level = $row['std_level'];
         $centre_name = $row['training_centre'];
         $centre_address = $row['training_address'];
-        $work_nature = $row['work_nature'];
-        $duration = $row['duration'];
+        $work_nature = $row['nature_of_work'];
+        $duration = $row['training_duration'];
         $trainer_name = $row['trainer_name'];
         $trainer_phone = $row['trainer_number'];
       ?>

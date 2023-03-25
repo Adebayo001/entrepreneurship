@@ -6,7 +6,7 @@ if(isset($_POST['next'])){
 	$lga = $_POST['slga'];
 	$matric = $_SESSION['matric'];
 	$query = "UPDATE students SET ";
-	$query .= "states = '{$state}', ";
+	$query .= "state = '{$state}', ";
 	$query .= "lga = '{$lga}'";
 	$query .= "WHERE matric_no = '{$matric}'";
 
@@ -50,9 +50,9 @@ if(isset($_POST['next'])){
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-						<li><a href="index.php">ACADEMIC IDENTIFICATION</a></li>
+							<!-- <li><a href="index.php">ACADEMIC IDENTIFICATION</a></li> -->
 							<li class="active"><a href="state.php">State Placement</a></li>
-							<li><a href="trainer.php">Training</a></li>
+							<!-- <li><a href="trainer.php">Training</a></li> -->
 						</ul>
 						<!-- <ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -92,7 +92,9 @@ if(isset($_POST['next'])){
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; CENTRE FOR ENTREPRENEURSHIP</li><li>Design: <a href="">ADETECHNOLOGY</a></li></ul>
+						<ul><li>&copy; CENTRE FOR ENTREPRENEURSHIP</li>
+						<!-- <li>Design: <a href="">ADETECHNOLOGY</a></li> -->
+					</ul>
 					</div>
 
 			</div>
