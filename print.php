@@ -131,9 +131,9 @@ margin-bottom:2px;
 
 </style>
 </head>
-<body>
-<?php if(isset($_SESSION['matric'])){
-echo "<script> onload='javascript:window.print()' </script>";
+<body <?php if(isset($_SESSION['matric'])){ ?>
+  onload='javascript:window.print()'> 
+  <?php
 } else {
   header("Location: index.php");
 } ?>
@@ -163,7 +163,8 @@ echo "<script> onload='javascript:window.print()' </script>";
         $work_nature = $row['nature_of_work'];
         $duration = $row['training_duration'];
         $trainer_name = $row['trainer_name'];
-        $trainer_phone = $row['trainer_number'];
+        $trainer_phone = $row['trainer_phone'];
+        $session = $row['session'];
       ?>
   <div id="logo_right"><img src="images/<?php echo $std_image; ?>" width="150" height="150" 
 	        alt="<?php echo $std_image; ?>" title="Olatunji Nafeesat Ayomide" class="pic"/></div>
@@ -172,7 +173,7 @@ echo "<script> onload='javascript:window.print()' </script>";
   <li><strong>MATRICULATION NUMBER:</strong> <span class="content_fill"><?php echo strtoupper($matric); ?></span></li>
   <li><strong>DEPARTMENT:</strong> <span class="content_fill"><?php echo strtoupper($department); ?></span></li>
   <li><strong>LEVEL:</strong> <span class="content_fill"><?php echo strtoupper($level); ?></span></li>
-  <li><strong>SESSION:</strong> <span class="content_fill">2022/2023</span></li>
+  <li><strong>SESSION:</strong> <span class="content_fill"><?php echo $session; ?></span></li>
   <li><strong>TRAINING CENTRE FULL NAME:</strong> <span class="content_fill"><?php echo strtoupper($centre_name); ?></span></li>
   <li><strong>TRAINING CENTRE ADDRESS: </strong><span class="content_fill"><?php echo strtoupper($centre_address); ?></span></li>
   <li><strong>NATURE OF WORK:</strong> <span class="content_fill"><?php echo strtoupper($work_nature); ?></span></li>
@@ -183,17 +184,18 @@ echo "<script> onload='javascript:window.print()' </script>";
   </ol>
 </div>
 <?php } ?>
-<div class="row">
+<!-- <div class="row">
                 <div class="col-md-12 form-group">
-                  <?php if(isset($_SESSION['matric'])){
+                  <?php 
+                  // if(isset($_SESSION['matric'])){
 
-                    echo "<input type='submit' onclick='javascript:window.print()' value='PRINT' class='btn btn-success rounded-0 py-2 px-4'>";
+                  //   echo "<input type='submit' onclick='javascript:window.print()' value='PRINT' class='btn btn-success rounded-0 py-2 px-4'>";
 
-                  } else {
-                    echo "";
-                  } ?>
+                  // } else {
+                  //   echo "";
+                  // } ?>
                 </div>
-              </div>
+              </div> -->
 </body>
 <?php session_destroy(); ?>
 </html>
