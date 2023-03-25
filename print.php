@@ -1,5 +1,7 @@
 <?php include("db.php"); ?>
 <?php session_start();
+
+$getmatric = $_SESSION['matric'];
 // if(isset($_POST['submit'])){
 //     $fullname = $_POST['fullname'];
 //     $matric = $_POST['matric'];
@@ -132,6 +134,8 @@ margin-bottom:2px;
 <body>
 <?php if(isset($_SESSION['matric'])){
 echo "<script> onload='javascript:window.print()' </script>";
+} else {
+  header("Location: index.php");
 } ?>
 <p>
 <div id="main">
@@ -146,8 +150,6 @@ echo "<script> onload='javascript:window.print()' </script>";
 <div id="content">
     <h4 style="text-align: center;"> OFFER OF PLACE OF ENTREPRENEURSHIP TRAINING</h4>
     <?php 
-      $getmatric = $_SESSION['matric'];
-
       $query = "SELECT * FROM students WHERE matric_no = '{$getmatric}'";
       $fetch_query = mysqli_query($connection, $query);
       while($row = mysqli_fetch_assoc($fetch_query)){
