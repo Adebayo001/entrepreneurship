@@ -187,13 +187,13 @@ margin-bottom:2px;
 <!-- <div class="row">
                 <div class="col-md-12 form-group">
                   <?php 
-                  if(isset($_SESSION['matric'])){
+                  // if(isset($_SESSION['matric'])){
 
-                    echo "<input type='submit' onclick='javascript:window.print()' value='PRINT' class='btn btn-success rounded-0 py-2 px-4'>";
+                  //   echo "<input type='submit' onclick='javascript:window.print()' value='PRINT' class='btn btn-success rounded-0 py-2 px-4'>";
 
-                  } else {
-                    echo "";
-                  } ?>
+                  // } else {
+                  //   echo "";
+                  // } ?>
                 </div>
               </div> -->
 </body>

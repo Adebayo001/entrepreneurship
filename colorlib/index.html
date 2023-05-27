@@ -1,9 +1,8 @@
-<script>alert('Please fill all details, all fields are required');</script>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Entrepreneurship Form</title>
+		<title>FormWizard_v1</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="entrepreneurship.yusufakinpeluconsults.com">
 
@@ -12,10 +11,11 @@
 
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="css/style.css">
+		<noscript src="js/status.js"></noscript>
 	</head>
 	<body>
 		<div class="wrapper">
-            <form method="post" action="functions.php" id="wizard" enctype="multipart/form-data">
+            <form action="" id="wizard">
         		<!-- SECTION 1 -->
                 <h2></h2>
                 <section>
@@ -66,17 +66,13 @@
 									<input type="text" autocomplete="off" name="department" placeholder="Input Your Department" class="form-control" required>
 								</div>
 								<div class="form-holder">
-									<input type="text" autocomplete="off" name="faculty" placeholder="Input Your Faculty" class="form-control" required>
-								</div>
-							</div>
-							<div class="form-row">
-							<div class="form-holder">
 									<select class="form-control" placeholder="Fresher or Returning" name="ststat" id="studentstat" onchange="show(this)" required>
 									</select>
 								</div>
+							</div>
+							<div class="form-row">
 								<div class="form-holder" id="slevel1">
 									<select class="form-control" name="level" id="slevel" class="form-control" required>
-										<option>--Select Level--</option>
 										<option>100</option>
 										<option>200</option>
 										<option>300</option>
@@ -84,8 +80,6 @@
 										<option>500</option>
 										</select>
 								</div>
-							</div>
-							<div class="form-row">
 								<div class="form-holder">
 									<select class="form-control" name="semester" placeholder="Select Semester" required>
                                         <option value="">--Select Semester--</option>
@@ -110,9 +104,9 @@
 						</div>
 						<div class="form-content">
 							<div class="form-header">
-								<h3>State of Internship</h3>
+								<h3>State</h3>
 							</div>
-							<p>Please Choose State and LGA</p>
+							<p>Please fill with additional info</p>
 							<div class="form-row">
 								<div class="form-holder w-100">
 									<select class="form-control" name="state" id="state" placeholder="Pick State" onchange="show(this)">
@@ -146,7 +140,7 @@
 							<div class="form-header">
 								<h3>Internship</h3>
 							</div>
-							<p style="font-size: 15px;">Your Internship must be in-line with your field</p>
+							<p>Send an optional message</p>
 							<div class="form-row">
 								<div class="form-holder">
 									<input class="form-control" type="text" name="centre_name" placeholder="Internship Company Name" required>
@@ -173,11 +167,6 @@
 									<textarea name="work_nature" id="" placeholder="Please give brief description here!" class="form-control" style="height: 60px;"></textarea>
 								</div>
 							</div>
-                            <!-- <div class="form-row">
-								<div class="form-holder">
-									<input type = "submit" class="form-control" value ="Submit">
-								</div>
-							</div> -->
 							<!-- <div class="checkbox-circle mt-24">
 								<label>
 									<input type="checkbox" checked>  Please accept <a href="#">terms and conditions ?</a>
@@ -197,8 +186,8 @@
 		<!-- JQUERY STEP -->
 		<script src="js/jquery.steps.js"></script>
 		<script src="js/main.js"></script>
-        <script src="js/status.js"></script>
-		<script src="files/assets/js/state.js"></script>
+		<script src="../assets/js/state.js"></script>
+		
 		
 		<!-- <script src="../assets/js/state.js"></script> -->
 		<!-- Template created and distributed by Colorlib -->
