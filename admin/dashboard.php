@@ -93,7 +93,6 @@
                   $query = "SELECT * FROM students";
                   $fetch_query = mysqli_query($connection, $query);
                   $count = mysqli_num_rows($fetch_query);
-                   
                ?>
                      <div class="row column1">
                         <div class="col-md-6 col-lg-4">
@@ -179,31 +178,49 @@
                                           </tr>
                                        </thead>
                                        <?php
-                  $query = "SELECT * FROM students";
-                  $fetch_query = mysqli_query($connection, $query);
-                  
-                  while($row = mysqli_fetch_array($fetch_query)){
-                      $id = $row['id'];
-                      $matric = $row['matric_no'];
-                      $fullname = $row['full_name'];
-                      $campus = $row['campus'];
-                      $college = $row['college'];
-                      $faculty = $row['faculty'];
-                      $department = $row['department'];
-                      $std_status = $row['std_status'];
-                      $std_level = $row['std_level'];
-                      $session = $row['session'];
-                      $semester = $row['semester'];
-                      $state = $row['state'];
-                      $lga = $row['lga'];
-                      $training_centre = $row['training_centre'];
-                      $training_address = $row['training_address'];
-                      $trainer_name = $row['trainer_name'];
-                      $trainer_phone = $row['trainer_phone'];
-                      $training_duration = $row['training_duration'];
-                      $nature_of_work = $row['nature_of_work'];
-                      $image = $row['image']; 
-               ?>
+                                       if(isset($_GET['page_no']) && $_GET['page_no']!=""){
+
+                                          $page_no = $_GET['page_no'];
+
+                                       } else {
+                                          $page_no = 1;
+                                          }
+                                             $totalpage = 25;
+                                             $offset = ($page_no-1) * $totalpage;
+                                             $nextpage = $page_no + 1;
+                                             $previouspage = $page_no - 1;
+                                             $adjacent = 2;
+                                             $query = "SELECT * FROM students";
+                                             $fetch_query = mysqli_query($connection, $query);
+                                             $count = mysqli_num_rows($fetch_query);
+
+                                             $number_of_pages = ceil($count/$totalpage);
+                                             $second_last = $number_of_pages - 1;
+
+                                             $addquery = "SELECT * FROM `students` LIMIT {$offset}, {$totalpage}";
+                                             $result = mysqli_query($connection, $addquery);
+                                             while($row = mysqli_fetch_array($result)){
+                                                $id = $row['id'];
+                                                $matric = $row['matric_no'];
+                                                $fullname = $row['full_name'];
+                                                $campus = $row['campus'];
+                                                $college = $row['college'];
+                                                $faculty = $row['faculty'];
+                                                $department = $row['department'];
+                                                $std_status = $row['std_status'];
+                                                $std_level = $row['std_level'];
+                                                $session = $row['session'];
+                                                $semester = $row['semester'];
+                                                $state = $row['state'];
+                                                $lga = $row['lga'];
+                                                $training_centre = $row['training_centre'];
+                                                $training_address = substr($row['training_address'], 0, 15);
+                                                $trainer_name = $row['trainer_name'];
+                                                $trainer_phone = $row['trainer_phone'];
+                                                $training_duration = substr($row['training_duration'], 0, 15);
+                                                $nature_of_work = $row['nature_of_work'];
+                                                $image = $row['image']; 
+                                          ?>
                                        <tbody>
                                           <tr>
                                              <td><?php echo $id ?></td>
@@ -220,17 +237,78 @@
                                              <td><?php echo $state ?></td>
                                              <td><?php echo $lga ?></td>
                                              <td><?php echo $training_centre ?></td>
-                                             <td><?php echo $training_address ?></td>
+                                             <td><?php echo $training_address.'..' ?></td>
                                              <td><?php echo $trainer_name ?></td>
                                              <td><?php echo $trainer_phone ?></td>
                                              <td><?php echo $training_duration ?></td>
-                                             <td><?php echo $nature_of_work ?></td>
+                                             <td><?php echo $nature_of_work.'..' ?></td>
                                              <td><img width="50px" src="../images/<?php echo $image ?>"></td>
                                           </tr>
                                        </tbody>
                                        <?php } ?>
                                     </table>
-                                 </div>
+                                 </div> <br>
+                                 <nav aria-label="Page navigation example">
+                                 <ul class="pagination justify-content-center">
+                                    <?php if($page_no > 1){
+                                    echo "<li class='page-item'><a class='page-link' href='?page_no=1'>First Page</a></li>";
+                                    } ?>
+                                       
+                                    <li class='page-item' <?php if($page_no <= 1){ echo "class='disabled'"; } ?>>
+                                    <a class='page-link' <?php if($page_no > 1){
+                                    echo "href='?page_no=$previouspage'";
+                                    } ?>>Previous</a>
+                                    </li>
+                                       <?php
+                                    if ($number_of_pages <= 10){  	 
+	for ($counter = 1; $counter <= $number_of_pages; $counter++){
+	if ($counter == $page_no) {
+	echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";	
+	        }else{
+        echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
+                }
+        }  
+} elseif ($number_of_pages > 10) {
+   if($page_no <= 4) {			
+      for ($counter = 1; $counter < 8; $counter++){		 
+        if ($counter == $page_no) {
+           echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";	
+           }else{
+                echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
+                     }
+     }
+     echo "<li class='page-item'><a class='page-link'>...</a></li>";
+     echo "<li class='page-item'><a class='page-link' href='?page_no=$second_last'>$second_last</a></li>";
+     echo "<li class='page-item'><a class='page-link' href='?page_no=$number_of_pages'>$number_of_pages</a></li>";
+     }
+  } else {
+   echo "<li class='page-item'><a class='page-link' href='?page_no=1'>1</a></li>";
+   echo "<li class='page-item'><a class='page-link' href='?page_no=2'>2</a></li>";
+   echo "<li class='page-item'><a class='page-link'>...</a></li>";
+   for (
+        $counter = $number_of_pages - 6;
+        $counter <= $number_of_pages;
+        $counter++
+        ) {
+        if ($counter == $page_no) {
+      echo "<li class='page-item active'><a class='page-link'>$counter</a></li>";	
+      }else{
+           echo "<li class='page-item'><a class='page-link' href='?page_no=$counter'>$counter</a></li>";
+      }                   
+        }
+   } 
+
+?>
+                                    <a class='page-link' <?php if($page_no < $number_of_pages) {
+                                    echo "href='?page_no=$nextpage'";
+                                    } ?>>Next</a>
+                                    </li>
+
+                                    <?php if($page_no < $number_of_pages){
+                                    echo "<li><a class='page-link' href='?page_no=$number_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
+                                    } ?>
+</ul>
+</nav>
                               </div>
                            </div>
                         </div>

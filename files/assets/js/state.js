@@ -651,7 +651,7 @@ var ngst = [
         "Shomolu",
         "Surulere"
       ],
-      "Nasarawa": [
+      "Nassarawa": [
         "--Choose LGA--",
         "Akwanga",
         "Awe",

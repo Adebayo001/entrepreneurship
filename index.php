@@ -1,4 +1,4 @@
-<script>alert('Please fill all details, all fields are required');</script>
+<?php require("modal.html"); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +21,7 @@
                 <section>
                     <div class="inner">
 						<div class="image-holder">
-							<img src="images/form-wizard-1.jpg" alt="">
+							<img src="images/form-wizard-1.jpg" alt=""> <?php include("index.html"); ?>
 						</div>
 						<div class="form-content" >
 							<div class="form-header">
@@ -71,6 +71,7 @@
 							</div>
 							<div class="form-row">
 							<div class="form-holder">
+								<!-- <label style="font-size:12px; color:black;">Student Status</label> -->
 									<select class="form-control" placeholder="Fresher or Returning" name="ststat" id="studentstat" onchange="show(this)" required>
 									</select>
 								</div>
@@ -166,6 +167,7 @@
 							<div class="form-row">
 								<div class="form-holder w-100">
 									<input type="file" class="form-control" name="uploadfile" id="uploadfile">
+									<small style="font-size:12px; color:red;"><em>The picture must not be more than 100kb</em></small>
 								</div>
 							</div>
 							<div class="form-row">

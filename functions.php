@@ -20,15 +20,31 @@ if(isset($_POST['matric'])){
     $trainer_phone = $_POST['trainer_phone'];
     $std_image = $_FILES['uploadfile']['name'];
     $std_image_temp = $_FILES['uploadfile']['tmp_name'];
+    $size= $_FILES['uploadfile']['size'];
     $work_nature = $_POST['work_nature'];
 
     $_SESSION['matric'] = $matric;
 
-    if(!(empty($matric)) && !(empty($fullname)) && !(empty($campus)) && !(empty($college)) && !(empty($faculty)) && !(empty($department)) && !(empty($ststat)) && !(empty($level)) && !(empty($semester)) && !(empty($state)) && !(empty($lga)) && !(empty($centre_name)) && !(empty($centre_address)) && !(empty($trainer_name)) && !(empty($trainer_phone)) && !(empty($std_image)) && !(empty($work_nature))){
+    $errors     = array();
+    $maxsize    = 100000;
+    $acceptable = array(
+        'image/jpeg',
+        'image/jpg',
+        'image/png'
+    );
 
-    $query = "SELECT matric_no FROM students WHERE matric_no = '{$matric}'";
-    $student_query = mysqli_query($connection, $query);
-    $count = mysqli_num_rows($student_query);
+   if(!(empty($matric)) && !(empty($fullname)) && !(empty($campus)) && !(empty($college)) && !(empty($faculty)) && !(empty($department)) && !(empty($ststat)) && !(empty($level)) && !(empty($semester)) && !(empty($state)) && !(empty($lga)) && !(empty($centre_name)) && !(empty($centre_address)) && !(empty($trainer_name)) && !(empty($trainer_phone)) && !(empty($std_image)) && !(empty($work_nature))){
+
+    if(($size >= $maxsize) || ($size == 0)) {
+        $errors[] = 'File too large. File must be less than 100kb.';
+    }
+    if((!in_array($_FILES["uploadfile"]["type"], $acceptable)) && (!empty($_FILES["uploadfile"]["type"]))) {
+        $errors[] = 'Invalid file type. Only JPG, and PNG types are accepted.';
+    }
+    if(count($errors) === 0) {
+        $query = "SELECT matric_no FROM students WHERE matric_no = '{$matric}'";
+        $student_query = mysqli_query($connection, $query);
+        $count = mysqli_num_rows($student_query);
     
      if($count != 0){
          echo "<script>alert('Matriculation Number already exist');
@@ -42,7 +58,24 @@ if(isset($_POST['matric'])){
 	$insert_query = mysqli_query($connection, $addquery);
 	echo "<script>alert('Registration Successful, Proceed to Print');
          window.location.href='print';</script>";
+         
+            $to = "adepeju.adigun@uniosun.edu.ng";
+            $subject = "Entrepreneurship Form";
+            $txt = "A new student registered";
+            $headers = "From: Adebayo" . "\r\n" .
+            "CC: suleiman.adebayo@cset.uniosun.edu.ng";
+
+            mail($to,$subject,$txt,$headers);
+
   }
+    } else {
+        foreach($errors as $error) {
+            echo '<script>alert("'.$error.'");
+            window.location.href="./";</script>';
+        }
+
+        die(); //Ensure no more processing is done
+    }
 } else {
     echo "<script>alert('All fields are required');
     window.location.href='./';</script>";

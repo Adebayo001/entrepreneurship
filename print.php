@@ -135,7 +135,7 @@ margin-bottom:2px;
   onload='javascript:window.print()'> 
   <?php
 } else {
-  header("Location: index.php");
+  header("Location: ./");
 } ?>
 <p>
 <div id="main">

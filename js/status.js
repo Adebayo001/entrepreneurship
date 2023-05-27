@@ -1,5 +1,5 @@
 			var studentstat = [
-    {"ID": "0", "Name": "----Choose----"},
+    {"ID": "0", "Name": "Status(Fresher or Returning)"},
     {"ID": "Fresher", "Name": "Fresher"},
     {"ID": "Returning", "Name": "Returning"},
     ];
