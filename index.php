@@ -1,4 +1,3 @@
-<?php require("modal.html"); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,9 +21,22 @@
                     <div class="inner">
 						<div class="image-holder">
 							<img src="images/form-wizard-1.jpg" alt=""> <?php include("index.html"); ?>
-						</div>
+							</div>
 						<div class="form-content" >
-							<div class="form-header">
+						<?php
+                      if (isset($_GET['errorp'])){
+                        if ($_GET['errorp']=="emptyfields"){
+                          echo '<div style="color:red;">Please fill in all fields!</div>';
+                        }else if ($_GET['errorp']=="matrictaken"){
+                            echo '<div style="color:red;">Matriculation Number already exist</div>';
+                        }else if ($_GET['errorp']=="File too large. File must be less than 100kb."){
+                            echo '<div style="color:red;">File too large. File must be less than 100kb.</div>';
+                        }else if ($_GET['errorp']=="Invalid file type. Only JPG, and PNG types are accepted."){
+                            echo '<div style="color:red;">Invalid file type. Only JPG, and PNG types are accepted.</div>';
+                        }
+                      }
+                       ?>
+					   <div class="form-header">
 								<h3>Academic Identification</h3>
 							</div>
 							<!-- <p>Please fill with your details</p> -->

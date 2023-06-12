@@ -47,8 +47,7 @@ if(isset($_POST['matric'])){
         $count = mysqli_num_rows($student_query);
     
      if($count != 0){
-         echo "<script>alert('Matriculation Number already exist');
-         window.location.href='./';</script>";
+        header("Location: index.php?errorp=matrictaken");
   } else {
     $folder = "images/" . $std_image;
     move_uploaded_file($std_image_temp, $folder);
@@ -56,8 +55,7 @@ if(isset($_POST['matric'])){
 	$addquery = "INSERT INTO `students` (`matric_no`, `full_name`, `campus`, `college`, `faculty`, `department`, `std_status`, `std_level`, `semester`, `state`, `lga`, `training_centre`, `training_address`, `trainer_name`, `trainer_phone`, `nature_of_work`, `image`) ";
 	$addquery .= "VALUES('{$matric}', '{$fullname}', '{$campus}', '{$college}', '{$faculty}', '{$department}', '{$ststat}', '{$level}', '{$semester}', '{$state}', '{$lga}', '{$centre_name}', '{$centre_address}', '{$trainer_name}', '{$trainer_phone}', '{$work_nature}', '{$std_image}')";
 	$insert_query = mysqli_query($connection, $addquery);
-	echo "<script>alert('Registration Successful, Proceed to Print');
-         window.location.href='print';</script>";
+	header("Location: print");
          
             $to = "adepeju.adigun@uniosun.edu.ng";
             $subject = "Entrepreneurship Form";
@@ -70,15 +68,14 @@ if(isset($_POST['matric'])){
   }
     } else {
         foreach($errors as $error) {
-            echo '<script>alert("'.$error.'");
-            window.location.href="./";</script>';
+            $err = $error;
+            header("Location: index.php?errorp=$err");
         }
 
         die(); //Ensure no more processing is done
     }
 } else {
-    echo "<script>alert('All fields are required');
-    window.location.href='./';</script>";
+    header("Location: index.php?errorp=emptyfields");
 }
 }
 ?>
