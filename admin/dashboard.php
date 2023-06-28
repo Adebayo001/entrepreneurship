@@ -1,4 +1,5 @@
 <?php include("../db.php"); ?>
+<?php ob_start(); ?>
 <?php session_start(); ?>
 <?php if(!isset($_SESSION['email'])){
    header("Location: ../");
@@ -252,11 +253,20 @@
                                              <td><?php echo $training_duration ?></td>
                                              <td><?php echo $nature_of_work.'..' ?></td>
                                              <td><img width="50px" src="../images/<?php echo $image ?>"></td>
-                                             <td><a class="btn btn-success" target="_blank" href="printadmin.php?print=<?php echo $id; ?>">Print</a></td>
+                                             <td><a class="btn btn-success" target="_blank" href="printadmin.php?print=<?php echo $id; ?>">Print</a>
+                                             <a class="btn btn-danger" onClick ="javascript: return confirm('Are you sure you want to delete?')" href="?delete=<?php echo $id; ?>">Delete</a></td>
                                           </tr>
                                        </tbody>
                                        <?php } ?>
                                     </table>
+                                    <?php 
+                                    if(isset($_GET['delete'])){
+                                       $the_id = $_GET['delete'];
+                                       $query = "DELETE FROM `students` WHERE `id` = {$the_id}";
+                                       $delete_query = mysqli_query($connection, $query);
+                                       header("Location: dashboard.php");
+                                   }
+                                    ?>
                                  </div> <br>
                                  <nav aria-label="Page navigation example">
                                  <ul class="pagination justify-content-center">
