@@ -154,6 +154,6 @@ margin-bottom:2px;
                 </div>
               </div> -->
               <input type='submit' onclick='javascript:window.print()' value='PRINT' class='btn btn-success rounded-0 py-2 px-4'>
-              <a type='submit' href="https://tinyurl.com/3r6mnske" class='btn btn-danger rounded-0 py-2 px-4'>EXIT</a>
+              <a type='submit' href="https://tinyurl.com/y6z8kfa8" class='btn btn-danger rounded-0 py-2 px-4'>EXIT</a>
 </body>
 </html>
