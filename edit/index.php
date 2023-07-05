@@ -15,17 +15,29 @@
 </head>
 <body>
 <div id="article">
-<h3>Entrepreneurship Form Printing</h3><br>
+<h3>Entrepreneurship Form Update</h3><br>
 <div>
-    <form method="POST" action="formprint.php">
+    <form method="POST" action="editstudent.php">
         <div class="col-md-6">
             <label>Input your Matric Number</label>
             <?php
                       if (isset($_GET['errorp'])){
                         if ($_GET['errorp']=="matricnotexist"){
                           echo '<div style="color:red;"> Not yet register!!! <a style="color:blue;" href="../modal.html">Click here to register</a></div>';
+                      }elseif ($_GET['errorp']=="emptyfields"){
+                        echo '<div style="color:red;">Please fill in all fields!</div>';
+                      }else if ($_GET['errorp']=="File too large. File must be less than 100kb."){
+                          echo '<div style="color:red;">File too large. File must be less than 100kb.</div>';
+                      }else if ($_GET['errorp']=="Invalid file type. Only JPG, and PNG types are accepted."){
+                          echo '<div style="color:red;">Invalid file type. Only JPG, and PNG types are accepted.</div>';
                       }
+                      else if ($_GET['errorp']=="Sorry, this image already exists. Rename the image before uploading"){
+                        echo '<div style="color:red;">Sorry, this image already exists.</div>';
                     }
+                    else if ($_GET['errorp']=="Sorry, this image already exists. Rename the image before uploading"){
+                      echo '<div style="color:red;">Sorry, this image already exists.</div>';
+                    }
+                  }
                        ?>
             <input type="text" name="search" placeholder="Matric Number" class="form-control"><br>
             <input type="submit" name="submit" value="Submit" class="btn btn-primary">

@@ -197,4 +197,5 @@ margin-bottom:2px;
                 </div>
               </div> -->
 </body>
+<?php session_destroy(); ?>
 </html>

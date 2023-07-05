@@ -57,13 +57,13 @@ if(isset($_POST['matric'])){
 	$insert_query = mysqli_query($connection, $addquery);
 	header("Location: print");
          
-            $to = "adepeju.adigun@uniosun.edu.ng";
-            $subject = "Entrepreneurship Form";
-            $txt = "A new student registered";
-            $headers = "From: Adebayo" . "\r\n" .
-            "CC: suleiman.adebayo@cset.uniosun.edu.ng";
+            // $to = "adepeju.adigun@uniosun.edu.ng";
+            // $subject = "Entrepreneurship Form";
+            // $txt = "A new student registered";
+            // $headers = "From: Adebayo" . "\r\n" .
+            // "CC: suleiman.adebayo@cset.uniosun.edu.ng";
 
-            mail($to,$subject,$txt,$headers);
+            // mail($to,$subject,$txt,$headers);
 
   }
     } else {

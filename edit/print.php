@@ -1,16 +1,8 @@
 <?php ob_start(); ?>
 <?php include("../db.php"); ?>
 <?php
-    if(isset($_POST['submit'])){
-        $search = $_POST['search'];
-
-        $query = "SELECT matric_no FROM students WHERE matric_no = '{$search}'";
-        $student_query = mysqli_query($connection, $query);
-        $count = mysqli_num_rows($student_query);
-    
-        if($count == 0){
-          header("Location: index.php?errorp=matricnotexist");
-      }
+    if(isset($_GET['matric'])){
+        $print = $_GET['matric'];
   }
 ?>
 <!DOCTYPE html">
@@ -121,7 +113,7 @@ margin-bottom:2px;
 <div id="content">
     <h4 style="text-align: center;"> OFFER OF PLACE OF ENTREPRENEURSHIP TRAINING</h4>
     <?php 
-      $query = "SELECT * FROM students WHERE matric_no = '{$search}'";
+      $query = "SELECT * FROM students WHERE matric_no = '{$print}'";
       $fetch_query = mysqli_query($connection, $query);
       while($row = mysqli_fetch_assoc($fetch_query)){
         $id = $row['id'];
@@ -162,6 +154,6 @@ margin-bottom:2px;
                 </div>
               </div> -->
               <input type='submit' onclick='javascript:window.print()' value='PRINT' class='btn btn-success rounded-0 py-2 px-4'>
-              <a type='submit' href="https://tinyurl.com/3r6mnske" class='btn btn-success rounded-0 py-2 px-4'>EXIT</a>
+              <a type='submit' href="https://tinyurl.com/3r6mnske" class='btn btn-danger rounded-0 py-2 px-4'>EXIT</a>
 </body>
 </html>
