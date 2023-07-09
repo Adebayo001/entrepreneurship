@@ -49,7 +49,7 @@ include("../db.php"); ?>
             }
 
             //check if image already exists in folder (old)
-            if (file_exists($target)) {
+            if (file_exists($folder)) {
                 $errors[] = 'Sorry, this image already exists. Rename the image before uploading';
             }
             if(($size >= $maxsize) || ($size == 0)) {

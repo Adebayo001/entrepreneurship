@@ -32,10 +32,10 @@
                           echo '<div style="color:red;">Invalid file type. Only JPG, and PNG types are accepted.</div>';
                       }
                       else if ($_GET['errorp']=="Sorry, this image already exists. Rename the image before uploading"){
-                        echo '<div style="color:red;">Sorry, this image already exists.</div>';
+                        echo '<div style="color:red;">Sorry, this image already exists. Rename the image before uploading</div>';
                     }
                     else if ($_GET['errorp']=="Sorry, this image already exists. Rename the image before uploading"){
-                      echo '<div style="color:red;">Sorry, this image already exists.</div>';
+                      echo '<div style="color:red;">Sorry, this image already exists. Rename the image before uploading</div>';
                     }
                   }
                        ?>

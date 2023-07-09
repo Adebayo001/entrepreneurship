@@ -55,7 +55,12 @@ if(isset($_POST['matric'])){
 	$addquery = "INSERT INTO `students` (`matric_no`, `full_name`, `campus`, `college`, `faculty`, `department`, `std_status`, `std_level`, `semester`, `state`, `lga`, `training_centre`, `training_address`, `trainer_name`, `trainer_phone`, `nature_of_work`, `image`) ";
 	$addquery .= "VALUES('{$matric}', '{$fullname}', '{$campus}', '{$college}', '{$faculty}', '{$department}', '{$ststat}', '{$level}', '{$semester}', '{$state}', '{$lga}', '{$centre_name}', '{$centre_address}', '{$trainer_name}', '{$trainer_phone}', '{$work_nature}', '{$std_image}')";
 	$insert_query = mysqli_query($connection, $addquery);
-	header("Location: print");
+    if($insert_query){
+        header("Location: print");
+    } else {
+        header("Location: index.php?errorp=specialcharacter");
+    }
+	
          
             // $to = "adepeju.adigun@uniosun.edu.ng";
             // $subject = "Entrepreneurship Form";
