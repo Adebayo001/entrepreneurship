@@ -80,7 +80,7 @@ include("../db.php"); ?>
                 $query .= "image = '{$new_image}' ";
                 $query .= "WHERE id = {$id}";
                 $update_query = mysqli_query($connection, $query);
-                if($insert_query){
+                if($update_query){
                     header("Location: print.php?matric=$matric");
                 } else {
                     header("Location: index.php?errorp=specialcharacter");
