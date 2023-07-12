@@ -34,8 +34,8 @@
                         }else if ($_GET['errorp']=="Invalid file type. Only JPG, and PNG types are accepted."){
                             echo '<div style="color:red;">Invalid file type. Only JPG, and PNG types are accepted.</div>';
                         }else if ($_GET['errorp']=="specialcharacter"){
-                            echo '<div style="color:red;">Please remove the special character inputed in the field</div>';
-                        }
+                            echo '<div style="color:red;">Remove any special character (e.g(-), (\'), @) in your input!!!</div>';
+						}
                       }
                        ?>
 					   <div class="form-header">

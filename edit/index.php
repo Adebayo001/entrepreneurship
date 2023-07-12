@@ -36,6 +36,8 @@
                     }
                     else if ($_GET['errorp']=="Sorry, this image already exists. Rename the image before uploading"){
                       echo '<div style="color:red;">Sorry, this image already exists. Rename the image before uploading</div>';
+                    }else if ($_GET['errorp']=="specialcharacter"){
+                      echo '<div style="color:red;">Remove any special character (e.g(-), (\'), @) in your input!!!</div>';
                     }
                   }
                        ?>

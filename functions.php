@@ -1,6 +1,6 @@
-<?php 
-include("db.php"); ?>
 <?php session_start();?>
+<?php ob_start(); ?>
+<?php include("db.php"); ?>
 <?php
 if(isset($_POST['matric'])){
     $matric = $_POST['matric'];
@@ -47,7 +47,7 @@ if(isset($_POST['matric'])){
         $count = mysqli_num_rows($student_query);
     
      if($count != 0){
-        header("Location: index.php?errorp=matrictaken");
+        header("Location: index_new.php?errorp=matrictaken");
   } else {
     $folder = "images/" . $std_image;
     move_uploaded_file($std_image_temp, $folder);
@@ -55,18 +55,23 @@ if(isset($_POST['matric'])){
 	$addquery = "INSERT INTO `students` (`matric_no`, `full_name`, `campus`, `college`, `faculty`, `department`, `std_status`, `std_level`, `semester`, `state`, `lga`, `training_centre`, `training_address`, `trainer_name`, `trainer_phone`, `nature_of_work`, `image`) ";
 	$addquery .= "VALUES('{$matric}', '{$fullname}', '{$campus}', '{$college}', '{$faculty}', '{$department}', '{$ststat}', '{$level}', '{$semester}', '{$state}', '{$lga}', '{$centre_name}', '{$centre_address}', '{$trainer_name}', '{$trainer_phone}', '{$work_nature}', '{$std_image}')";
 	$insert_query = mysqli_query($connection, $addquery);
-    if($insert_query){
-        header("Location: print");
-    } else {
-        header("Location: index.php?errorp=specialcharacter");
-    }
-	
+	if($insert_query){
+	    header("Location: print.php");
+	} else {
+	    header("Location: index_new.php?errorp=specialcharacter");
+	}
          
-            // $to = "adepeju.adigun@uniosun.edu.ng";
-            // $subject = "Entrepreneurship Form";
-            // $txt = "A new student registered";
-            // $headers = "From: Adebayo" . "\r\n" .
-            // "CC: suleiman.adebayo@cset.uniosun.edu.ng";
+         //   $to = "adepeju.adigun@uniosun.edu.ng";
+          //  $subject = "Entrepreneurship Form";
+         //   $txt = "A new student registered
+          //  Name: {$fullname}
+         //   Matriculation Number: {$matric}
+          //  Campus: {$campus}
+          //  College: {$college}
+       //     Faculty: {$faculty}
+        //    Department: {$department} ";
+       //     $headers = "From: Adebayo" . "\r\n" .
+        //    "CC: suleiman.adebayo@cset.uniosun.edu.ng";
 
             // mail($to,$subject,$txt,$headers);
 
@@ -74,13 +79,13 @@ if(isset($_POST['matric'])){
     } else {
         foreach($errors as $error) {
             $err = $error;
-            header("Location: index.php?errorp=$err");
+            header("Location: index_new.php?errorp=$err");
         }
 
-        die(); //Ensure no more processing is done
+
     }
 } else {
-    header("Location: index.php?errorp=emptyfields");
+    header("Location: index_new.php?errorp=emptyfields");
 }
 }
 ?>
